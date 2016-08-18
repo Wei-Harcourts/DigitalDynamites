@@ -8,7 +8,7 @@ namespace Harcourts.eOpen.Web.Models
     public class FacebookVisitor : Visitor
     {
         public bool IsFacebookVisitor => true;
-
         public string FacebookUserId { get; set; }
+        public bool InTouch { get; set; }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Hosting;
 using System.Web.Http;
 using Harcourts.eOpen.Web.Models;
@@ -23,14 +19,21 @@ namespace Harcourts.eOpen.Web.Controllers
 
         [Route("")]
         [HttpGet]
-        public IEnumerable<Visitor> Get()
+        public IHttpActionResult Get()
         {
-            return _repository.All();
+            try
+            {
+                return Ok(_repository.All());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [Route("")]
         [HttpPost, HttpPut]
-        public ApiResult Post([BindVisitor] Visitor value)
+        public IHttpActionResult Post([BindVisitor] Visitor value)
         {
             try
             {
@@ -40,11 +43,42 @@ namespace Harcourts.eOpen.Web.Controllers
                 }
 
                 _repository.Create(value);
-                return new ApiResult {Success = true, Message = string.Empty};
+                return Ok(new ApiResult {Success = true, Message = string.Empty});
             }
             catch (Exception ex)
             {
-                return new ApiResult {Success = false, Message = ex.Message};
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("notifications/")]
+        [HttpPost]
+        public IHttpActionResult Notify()
+        {
+            try
+            {
+                var visitors=_repository.All();
+                foreach (var visitor in visitors)
+                {
+                    var facebookVisitor = visitor as FacebookVisitor;
+                    if (facebookVisitor == null)
+                    {
+                        continue;
+                    }
+
+                    if (!facebookVisitor.InTouch)
+                    {
+                        continue;
+                    }
+
+                    // PushNotification(facebookVisitor.FacebookUserId)
+                }
+
+                return Ok(new ApiResult {Success = true, Message = string.Empty});
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
