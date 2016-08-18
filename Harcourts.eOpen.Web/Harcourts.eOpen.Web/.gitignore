@@ -1,0 +1,3 @@
+# ignore the js and css files in dist folder
+Content/*.js
+Content/*.css

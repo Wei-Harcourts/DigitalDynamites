@@ -1,0 +1,53 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the tooltip component
+// -----------------------------------------------------------------------------
+
+md-tooltip {
+    overflow: visible;
+    font-size: $tooltip-fontsize-sm;
+    > .md-content {
+        background: $tooltip-bg;
+        color: #fff;
+        position: relative;
+        overflow: visible;
+        &:before {
+            content: "";
+            @include triangle(1.2rem, $tooltip-bg, up);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            margin-left: -0.6rem;
+        }
+    }
+    &[md-direction="top"] > .md-content:before {
+        @include triangle(1.2rem, $tooltip-bg, down);
+        bottom: auto;
+        top: 100%;
+        border-bottom-color: transparent;
+    }
+    &[md-direction="left"] > .md-content:before {
+        @include triangle(1.2rem, $tooltip-bg, right);
+        left: 100%;
+        bottom: 50%;
+        margin-left: 0;
+        margin-bottom: -0.6rem;
+    }
+    &[md-direction="right"] > .md-content:before {
+        @include triangle(1.2rem, $tooltip-bg, left);
+        right: 100%;
+        left: auto;
+        bottom: 50%;
+        margin-left: 0;
+        margin-bottom: -0.6rem;
+    }
+    @include respond-to(small) {
+        font-size: $tooltip-fontsize-lg;
+    }
+}
+
+// Hide Tooltips on small screens and iPad.
+@media only screen and (max-width: map-get($breakpoints-max-width, 'xs')), (min-device-width: 768px) and (max-device-width: 1024px)  {
+    md-tooltip {
+        display: none;
+    }
+}

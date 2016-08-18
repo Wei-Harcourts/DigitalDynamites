@@ -1,0 +1,160 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.md-button {
+    &:not([disabled]) {
+        &:hover {
+            background-color: rgba(shade($grey-50, 10%), 0.2);
+        }
+        &.md-focused {
+            background-color: rgba(shade($grey-50, 10%), 0.2);
+        }
+        &.md-icon-button:hover {
+            background-color: transparent;
+        }
+    }
+
+    &.md-fab {
+        background-color: $primary;
+        color: #fff;
+        md-icon {
+            color: #fff;
+        }
+        &:not([disabled]) {
+            &:hover {
+                background-color: shade($primary, 10%);
+            }
+            &.md-focused {
+                background-color: shade($primary, 10%);
+            }
+        }
+    }
+
+    &.md-primary {
+        color: $secondary;
+        &.md-raised,
+        &.md-fab {
+            color: #fff;
+            background-color: $secondary;
+            &:not([disabled]) {
+                md-icon {
+                    color: #fff;
+                }
+                &:hover {
+                    background-color: shade($secondary, 10%);
+                }
+                &.md-focused {
+                    background-color: shade($secondary, 10%);
+                }
+            }
+        }
+        &:not([disabled]) {
+            md-icon {
+                color: $secondary;
+            }
+        }
+    }
+    &.md-fab {
+        background-color: $primary;
+        color: #fff;
+        &:not([disabled]) {
+            .md-icon {
+                color: #fff;
+            }
+            &:hover {
+                background-color: shade($primary, 10%);
+            }
+            &.md-focused {
+                background-color: shade($primary, 10%);
+            }
+        }
+    }
+
+    &.md-raised {
+        color: $primary;
+        background-color: shade($menu-bg, 2%);
+        &:not([disabled]) {
+            md-icon {
+                color: $icon-color-dark;
+            }
+            &:hover {
+                background-color: shade($menu-bg, 4%);
+            }
+            &.md-focused {
+                background-color: shade($menu-bg, 6%);
+            }
+        }
+    }
+
+    &.md-warn {
+        color: $color-error;
+
+        &.md-raised,
+        &.md-fab {
+            color: #fff;
+            background-color: $color-error;
+            &:not([disabled]) {
+                md-icon {
+                    color: #fff;
+                }
+                &:hover {
+                    background-color: shade($color-error, 2%);
+                }
+                &.md-focused {
+                    background-color: shade($color-error, 4%);
+                }
+            }
+        }
+        &:not([disabled]) {
+            md-icon {
+                color: $color-error;
+            }
+        }
+    }
+
+    &.md-accent {
+        color: $primary;
+        &.md-raised,
+        &.md-fab {
+            color: #fff;
+            background-color: $primary;
+            &:not([disabled]) {
+                md-icon {
+                    color: #fff;
+                }
+                &:hover {
+                    background-color: shade($primary, 10%);
+                }
+                &.md-focused {
+                    background-color: shade($primary, 10%);
+                }
+            }
+        }
+        &:not([disabled]) {
+            md-icon {
+                color: $primary;
+            }
+        }
+    }
+
+    &[disabled],
+    &.md-raised[disabled],
+    &.md-fab[disabled],
+    &.md-accent[disabled],
+    &.md-warn[disabled] {
+        color: tint($text-color, 20%);
+        cursor: default;
+
+        md-icon {
+            color: tint($text-color, 20%);
+        }
+    }
+    &.md-raised[disabled],
+    &.md-fab[disabled] {
+        background-color: shade($menu-bg, 4%);
+    }
+    &[disabled] {
+        background-color: transparent;
+    }
+}

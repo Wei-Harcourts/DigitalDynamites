@@ -1,0 +1,191 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+
+/// Copy text color
+/// @type Color
+$text-color: #0a0a0a !default;
+
+/// Main brand color
+/// @type Color
+$primary: #002B49;
+$brand-color: $primary !default;
+
+/// Secondary brand color
+/// @type Color
+$secondary: #00adef;
+$brand-color-secondary: $secondary !default;
+
+$alt-background: #404e5c;
+
+// Panels and Borders
+$default-border-color: rgba(0,0,0,0.12);
+
+/// Greys
+/// @type Color
+
+$grey-50: scale-color($primary, $saturation: -85%, $lightness: 97%) !default;
+$grey-75: darken($grey-50, 2.5%) !default;
+$grey-100: darken($grey-50, 5%) !default;
+$grey-300: darken($grey-50, 15%) !default;
+
+// Container's Min Width.
+$min-body-width: 320px;
+
+/// Container's maximum width
+/// Below that is 100%
+/// @type Length
+$max-width: 1600px !default;
+
+// Validation Colours.
+$color-success: #259b24;
+$color-error: #e51c23;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// @see {mixin} respond-to
+$breakpoints: (
+  'small': (min-width: 600px),
+  'medium': (min-width: 960px),
+  'large': (min-width: 1280px),
+  'xlarge': (min-width: 1760px),
+) !default;
+
+$breakpoints-min-width: (
+  'small': 600px,
+  'medium': 960px,
+  'large': 1280px,
+  'xlarge': 1760px
+) !default;
+
+$breakpoints-max-width: (
+  'xs': 599px,
+  'small': 959px,
+  'medium': 1279px,
+  'large': 1759px
+) !default;
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;
+
+// Transition Variables
+$default-transition: 0.2s ease-in-out;
+
+// Layout Variables.
+$default-padding: 15px;
+$content-wrap-padding: 30px;
+$content-wrap-padding-sm: 15px;
+
+// Content Wrapping.
+$content-bg: #fff;
+
+/// Library Header Variables.
+/// Related to stuff in the header.
+
+// Menu / Dropdown Variables.
+$menu-bg: #fff;
+$menu-hover-bg: shade($menu-bg, 2%);
+$menu-focus-bg: shade($menu-bg, 4%);
+
+/// Page Header.
+$header-height: 60px;
+$header-bg: rgba($primary, 0.95);
+$header-color: #fff;
+$h1-header-bg: $primary;
+$h1-header-width: 154px;
+
+// Subheaders
+$subheader-height: 40px;
+$subheader-font-size: 2.4rem;
+
+/// Icon Variables
+/// With guidelines from material design icons
+/// https://google.github.io/material-design-icons/
+$icon-size-sm: 18px;
+$icon-size-md: 24px;
+$icon-size-lg: 36px;
+$icon-size-xl: 48px;
+
+$icon-color-light: rgba(255, 255, 255, 1);
+$icon-color-light-disabled: rgba(255, 255, 255, 0.3);
+$icon-color-dark: rgba($primary, 0.54);
+$icon-color-dark-disabled: rgba(0, 0, 0, 0.26);
+
+/// Sidebar Variables
+$page-sidebar-bg: #fafafa;
+$page-sidebar-width-sm: $min-body-width - 60px;
+$page-sidebar-width: 320px;
+$page-sidebar-width-lg: 360px;
+$page-sidebar-padding-lg: 30px;
+
+// Site Search Variables.
+$site-search-height: 40px;
+
+/// Global Menu Variables
+$global-menu-bg: rgba($secondary, 0.9);
+$global-menu-color: #fff;
+$global-menu-hover-bg: rgba($primary, 0.2);
+
+// Form Variables
+// Inputs
+$input-height: 36px;
+$input-bg: scale-color($content-bg, $lightness: -2%);
+$input-color: $text-color;
+$input-border-color: scale-color($content-bg, $lightness: -10%);
+$placeholder-color: tint($text-color, 50%);
+$input-validation-color: $color-error;
+
+$label-color: tint($input-color, 20%);
+$label-font-weight: 300;
+
+// Chips
+$chip-height: 32px;
+
+// Table Variables
+$table-border-color: $default-border-color;
+$table-hover-bg: $menu-hover-bg;
+
+// Tooltip Variables
+$tooltip-bg: rgba(shade($primary, 50%),0.8);
+$tooltip-fontsize-sm: 1.4rem;
+$tooltip-fontsize-lg: 1.1rem;
+
+// Documents.
+// ===============================================================
+$gallery-tile-height: 180px;
+$gallery-tile-icon-size: 30px;
+$gallery-tile-border-size: 6px;
+$gallery-tile-bg: rgba(shade($primary, 50%), 0.5);
+$gallery-tile-font-size: 1.8rem;
+$gallery-tile-line-height: 2.2rem;
+$media-url: #ffc107;
+$media-file: $secondary;
+$media-video: #cd201f;
+$media-audio: $media-video;
+$media-spreadsheet: #217346;
+$media-powerpoint: #d14525;
+
+// Media PLayer.
+// ===============================================================
+$media-player-iframe-bg: #000;
+
+// Z-Index Index.
+$zindex-header: 60;
+$zindex-page-sidebar: 58;
+$zindex-content-loading-overlay: 57;
+$zindex-page-sidebar-backdrop: 56;
+$zindex-global-sidebar: 4;

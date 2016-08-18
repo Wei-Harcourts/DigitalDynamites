@@ -1,0 +1,123 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to Angular Material component: chips.
+// -----------------------------------------------------------------------------
+
+// Chip Wrapper.
+// ==========================================================
+md-chips {
+    .md-chips {
+        border-bottom: solid 1px $input-border-color;
+        min-height: $input-height;
+        padding: 0;
+        @include clearfix;
+        &.md-focused {
+            border-bottom: solid 2px $secondary;
+        }
+        .md-chip-input-container {
+            margin: 0;
+            width: 100%;
+            &:not(:first-child) {
+                margin: 0;
+            }
+            md-autocomplete {
+                height: $input-height + 5px;
+                padding-bottom: 4px;
+            }
+            .md-input {
+                color: $input-color;
+                height: 34px;
+                @include placeholder {
+                    color: $placeholder-color;
+                }
+            }
+        }
+        &:not(.md-readonly) .md-chip:not(.md-readonly) {
+            padding-right: 25px;
+        }
+    }
+    .md-chip-remove {
+        color: #fff;
+        &:hover {
+            color: $color-error;
+            md-icon path {
+                fill: $color-error;
+            }
+        }
+        md-icon path {
+            fill: #fff;
+        }
+    }
+}
+
+// Chip.
+// ==========================================================
+md-chips .md-chips .md-chip {
+    background: rgba($primary, 0.45);
+    color: #fff;
+    height: $chip-height;
+    line-height: $chip-height;
+    font-weight: 400;
+    font-size: 1.4rem;
+    margin: 0 5px 5px 0;
+    @include transition(background $default-transition);
+    &:hover {
+        background: rgba($primary, 0.55);
+    }
+    md-icon {
+        color: #fff;
+    }
+    &.md-focused {
+        background: $primary;
+        color: #fff;
+        md-icon {
+            color: inherit;
+        }
+    }
+    a {
+        color: inherit;
+    }
+    &._md-chip-editing {
+        background: transparent;
+        color: $primary;
+    }
+}
+
+.md-contact-suggestion {
+    span.md-contact-email {
+        color: #fff;
+    }
+}
+
+// Document Chips - Icons.
+// ==========================================================
+.md-chip-content .document-item {
+    padding-left: $chip-height - 6px;
+    &:before {
+        @include material-icon();
+        text-align: center;
+        border-radius: $chip-height;
+        height: $chip-height;
+        width: $chip-height;
+        font-size: 18px;
+        line-height: $chip-height;
+        color: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    &.document-media-type-1:before {
+        background: $media-url;
+    }
+    // Files.
+    &.document-media-type-2:before {
+        background: $media-file;
+    }
+    // Videos.
+    &.document-media-type-3:before {
+        background: $media-video;
+    }
+    // Audio.
+    &.document-media-type-4:before {
+        background: $media-audio;
+    }
+}

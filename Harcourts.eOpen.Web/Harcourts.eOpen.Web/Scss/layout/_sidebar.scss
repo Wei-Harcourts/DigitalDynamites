@@ -1,0 +1,245 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the sidebar of the site/application.
+// -----------------------------------------------------------------------------
+
+// Default NG Material Styles
+// ====================================================
+md-sidenav {
+    background: $menu-bg;
+}
+
+// Backdrop for the Categories Sidebar.
+// ====================================================
+.page-sidebar-backdrop {
+    display: none;
+    @include transition(none);
+    background-color: transparent;
+    opacity: 0;
+    z-index: $zindex-page-sidebar-backdrop;
+}
+
+// Sidebar is open.
+// ====================================================
+.page-sidebar-open {
+    @include user-select(none);
+    .page-sidebar-backdrop {
+        display: block;
+    }
+    > .page-sidebar {
+        @include transform(translate3d(0, 0, 0));
+        width: $page-sidebar-width-sm;
+        min-width: $page-sidebar-width-sm;
+        max-width: $page-sidebar-width-sm;
+        @include respond-to(small) {
+            width: $page-sidebar-width;
+            min-width: $page-sidebar-width;
+            max-width: $page-sidebar-width;
+        }
+        @include respond-to(large) {
+            width: $page-sidebar-width-lg;
+            min-width: $page-sidebar-width-lg;
+            max-width: $page-sidebar-width-lg;
+        }
+    }
+}
+// Categories Sidebar
+// ====================================================
+.page-sidebar {
+    position: fixed;
+    padding-top: $header-height;
+    @include display(flex);
+    @include flex-direction(column);
+    overflow: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: $zindex-page-sidebar;
+    background: $page-sidebar-bg;
+    width: 0;
+    min-width: 0;
+    max-width: none;
+    @include transform(translate3d(-100%, 0, 0));
+    @include transition(0.2s all linear);
+    md-toolbar {
+        flex: 0 0 auto;
+    }
+    @include respond-to(medium) {
+        width: $page-sidebar-width;
+        min-width: $page-sidebar-width;
+        max-width: $page-sidebar-width;
+        @include transform(translate3d(0, 0, 0));
+    }
+    @include respond-to(large) {
+        width: $page-sidebar-width-lg;
+        min-width: $page-sidebar-width-lg;
+        max-width: $page-sidebar-width-lg;
+    }
+}
+.page-nav {
+    padding: $default-padding 0;
+    .md-button {
+        display: block;
+        width: auto;
+        text-align: left;
+        text-transform: none;
+        border-radius: 0;
+        margin: 0;
+        padding: 0 10px 0 ($default-padding*2);
+        @include transition(all $default-transition);
+        @extend .ellipsis;
+        md-icon {
+            display: none;
+        }
+        .md-ripple-container {
+            border-radius: 0;
+        }
+        &:hover {
+            color: $secondary;
+        }
+    }
+    h3 {
+        margin: 0;
+        padding: 0 20px 5px;
+        font-size: 1.4rem;
+        font-weight: 300;
+        color: rgba($text-color,0.7);
+    }
+    ul {
+        margin: 0 0 20px;
+        ul {
+            margin-top: 5px;
+        }
+    }
+    @include respond-to(large) {
+        .md-button {
+            padding: 0 $page-sidebar-padding-lg;
+            md-icon {
+                display: inline-block;
+                margin-right: $default-padding;
+                font-size: $icon-size-sm;
+                height: $icon-size-sm;
+                width: $icon-size-sm;
+                line-height: $icon-size-sm - 1px;
+                color: inherit;
+            }
+            span {
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+// Global Menu - Global Sidebar
+// ====================================================
+.global-sidenav {
+    background: $global-menu-bg;
+    color: $global-menu-color;
+    top: $header-height;
+    .md-toolbar-tools {
+        font-size: 1.3rem;
+        font-weight: 300;
+        @include justify-content(space-between);
+        background: $global-menu-bg;
+        .md-button {
+            text-transform: none;
+            font-weight: inherit;
+            font-size: inherit;
+            &:not([disabled]):hover {
+                background: $global-menu-hover-bg;
+                color: #fff;
+            }
+        }
+    }
+    md-divider {
+        margin: $default-padding 0;
+    }
+}
+
+// Global Menu - Global search
+// ====================================================
+.global-search {
+    padding: 0 $default-padding;
+    > md-input-container {
+        background: $global-menu-hover-bg;
+        width: 100%;
+        padding-left: 36px;
+        @include transition(background $default-transition);
+        md-icon {
+            left: 8px;
+        }
+        input {
+            border: none;
+            height: 30px;
+            line-height: 26px;
+            @include placeholder {
+                color: rgba(#fff, 0.5);
+                font-size: 1.4rem;
+            }
+        }
+        &.md-input-focused {
+            background: opacify($global-menu-hover-bg, 0.2);
+        }
+        .md-errors-spacer {
+            display: none; // Hide the errors as there is no validation on the search.
+        }
+    }
+}
+
+// Global Menu - Global Navigation
+// ====================================================
+.global-nav {
+    padding: 20px 0;
+    .md-button {
+        display: block;
+        width: auto;
+        text-align: left;
+        text-transform: none;
+        border-radius: 0;
+        margin: 0;
+        padding: 0 $default-padding;
+        @include transition(all $default-transition);
+        height: 4.4rem;
+        line-height: 4.4rem;
+        font-weight: 300;
+        md-icon {
+            color: rgba($global-menu-color, 0.8);
+            font-size: 24px;
+            line-height: 2.2rem;
+            margin-right: 10px;
+            width: 30px;
+            text-align: center;
+            @include transition(color $default-transition);
+            &[md-svg-src] {
+                opacity: 0.8;
+            }
+        }
+        .md-ripple-container {
+            border-radius: 0;
+        }
+        &:not([disabled]):hover,
+        &:not([disabled]):active {
+            background: $global-menu-hover-bg;
+            color: #fff;
+            md-icon {
+                color: inherit;
+            }
+        }
+    }
+    .return-to-h1 {
+        md-icon {
+            height: 32px;
+            width: 32px;
+            svg {
+                width: 36px;
+                height: 36px;
+            }
+        }
+    }
+    h3 {
+        margin: 0;
+        padding: 0 $default-padding 5px;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: rgba($global-menu-color,0.8);
+    }
+}
