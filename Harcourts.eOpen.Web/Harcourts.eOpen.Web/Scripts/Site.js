@@ -1,3 +1,7 @@
-﻿$(document).on("ready", function(e) {
-    $("body").addClass("loaded");
+﻿$(document).ready(function(e) {
+    
+    // Initialise the FullPage Layout JS.
+    $(".wrapper").fullpage({
+        sectionSelector: '.section'
+    });
 });
