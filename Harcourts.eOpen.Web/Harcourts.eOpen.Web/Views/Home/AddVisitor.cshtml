@@ -1,0 +1,46 @@
+﻿@using Harcourts.eOpen.Web.Models
+   
+@{
+    ViewBag.Title = "Add new visitor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    var visitor = {};
+    visitor.name = '@(((ViewBag.FbUser as FacebookUserModel)?.first_name + " " + (ViewBag.FbUser as FacebookUserModel)?.last_name).Trim())';
+    visitor.emailAddress = '@((((ViewBag.FbUser as FacebookUserModel)?.email) ?? string.Empty).Trim())';
+    visitor.isFacebookVisitor = @((ViewBag.FbUser as FacebookUserModel) == null ? 0 : 1);
+    visitor.facebookUserId = '@((((ViewBag.FbUser as FacebookUserModel)?.id) ?? string.Empty).Trim())';
+    visitor.inTouch = 1;
+
+    (function($) {
+
+        $(document).ready(function() {
+            $("#done").click(function() {
+                $.ajax({
+                    url: "/visitors/",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(visitor),
+                    processData: false
+                });
+            });
+
+            $("#notify").click(function() {
+                $.ajax({
+                    url: "/visitors/notifications",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    processData: false
+                });
+            });
+        });
+    })(jQuery);
+
+    
+</script>
+
+<button id="done">Done</button>
+<button id="notify">Notify</button>
