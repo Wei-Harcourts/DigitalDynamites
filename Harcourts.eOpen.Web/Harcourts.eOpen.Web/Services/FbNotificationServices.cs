@@ -39,13 +39,14 @@ namespace Harcourts.eOpen.Web.Services
                 Value = _appSettings.FbNotificationHref
             });
 
-            restRequest.Parameters.Add(new Parameter
-            {
-                Name = StringConstants.Template,
-                Type = ParameterType.QueryString,
-                Value = _appSettings.Template
-            });
-            restClient.ExecuteAsPost(restRequest, StringConstants.Post);
+            restRequest.Parameters.Add(
+                new Parameter
+                {
+                    Name = StringConstants.Template,
+                    Type = ParameterType.QueryString,
+                    Value = string.Format(_appSettings.Template, userId)
+                });
+            var response = restClient.ExecuteAsPost(restRequest, StringConstants.Post);
         }
     }
 }

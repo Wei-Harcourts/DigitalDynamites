@@ -1,39 +1,87 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Hosting;
 using System.Web.Http;
+using Harcourts.eOpen.Web.Models;
+using Harcourts.eOpen.Web.Services;
 
 namespace Harcourts.eOpen.Web.Controllers
 {
+    [RoutePrefix("visitors")]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        private readonly VisitorRepository _repository;
+
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+            var appDataFolder = HostingEnvironment.MapPath("~/App_Data/");
+            _repository = new VisitorRepository(appDataFolder);
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        [Route("")]
+        [HttpGet]
+        public IHttpActionResult Get()
         {
-            return "value";
+            try
+            {
+                return Ok(_repository.All());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        [Route("")]
+        [HttpPost, HttpPut]
+        public IHttpActionResult Post([BindVisitor] Visitor value)
         {
+            try
+            {
+                if (value == null || string.IsNullOrEmpty(value.Name))
+                {
+                    throw new ValidationException("Invalid visitor.");
+                }
+
+                _repository.Create(value);
+                return Ok(new ApiResult {Success = true, Message = string.Empty});
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        [Route("notifications/")]
+        [HttpPost]
+        public IHttpActionResult Notify()
         {
-        }
+            try
+            {
+                var visitors=_repository.All();
+                foreach (var visitor in visitors)
+                {
+                    var facebookVisitor = visitor as FacebookVisitor;
+                    if (facebookVisitor == null)
+                    {
+                        continue;
+                    }
 
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+                    if (!facebookVisitor.InTouch)
+                    {
+                        continue;
+                    }
+
+                    var fb = new FbNotificationServices();
+                    fb.PushFbNotification(facebookVisitor.FacebookUserId);
+                }
+
+                return Ok(new ApiResult {Success = true, Message = string.Empty});
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
