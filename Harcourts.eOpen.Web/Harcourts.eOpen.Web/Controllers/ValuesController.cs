@@ -1,39 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Hosting;
 using System.Web.Http;
+using Harcourts.eOpen.Web.Models;
 
 namespace Harcourts.eOpen.Web.Controllers
 {
+    [RoutePrefix("visitors")]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        private readonly VisitorRepository _repository;
+
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+            var appDataFolder = HostingEnvironment.MapPath("~/App_Data/");
+            _repository = new VisitorRepository(appDataFolder);
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        [Route("")]
+        [HttpGet]
+        public IEnumerable<Visitor> Get()
         {
-            return "value";
+            return _repository.All();
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        [Route("")]
+        [HttpPost, HttpPut]
+        public ApiResult Post([BindVisitor] Visitor value)
         {
-        }
+            try
+            {
+                if (value == null || string.IsNullOrEmpty(value.Name))
+                {
+                    throw new ValidationException("Invalid visitor.");
+                }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+                _repository.Create(value);
+                return new ApiResult {Success = true, Message = string.Empty};
+            }
+            catch (Exception ex)
+            {
+                return new ApiResult {Success = false, Message = ex.Message};
+            }
         }
     }
 }

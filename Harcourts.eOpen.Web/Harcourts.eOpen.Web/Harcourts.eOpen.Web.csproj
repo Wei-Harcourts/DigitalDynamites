@@ -126,11 +126,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Converters.cs" />
+    <Compile Include="App_Start\BindVisitorAttribute.cs" />
+    <Compile Include="App_Start\VisitorHelper.cs" />
+    <Compile Include="App_Start\VisitorRepository.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -140,9 +142,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApiResult.cs" />
+    <Compile Include="Models\FacebookVisitor.cs" />
+    <Compile Include="Models\Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\mongodb.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
