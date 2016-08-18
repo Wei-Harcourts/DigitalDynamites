@@ -2,6 +2,7 @@
     
     // Initialise the FullPage Layout JS.
     $(".wrapper").fullpage({
-        sectionSelector: '.section'
+        sectionSelector: '.section',
+        anchors: ['home', 'gallery', 'form']
     });
 });
