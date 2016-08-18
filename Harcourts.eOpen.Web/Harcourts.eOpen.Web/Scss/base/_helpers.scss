@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+// Basic wrapper including consistent padding etc.
+.container {
+    padding: $default-padding;
+}
+
+// Truncate text with ellipsis.
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

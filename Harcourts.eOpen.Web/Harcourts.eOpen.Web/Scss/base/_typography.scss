@@ -1,0 +1,10 @@
+/**
+ * Basic typography style for copy text
+ */
+html {
+    font-size: 62.5%; // Set rem to 10px
+}
+body {
+  color: $text-color;
+  font: normal 1.6rem / 1.2 $text-font-stack;
+}
