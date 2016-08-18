@@ -11,34 +11,55 @@
     left: 40px;
 }
 
+.property-info {
+    position: absolute;
+    bottom: 120px;
+    left: 40px;
+    color: #fff;
+}
 h1 {
     margin: 0;
+    font-size: 32px;
+    font-weight: 300;
+    text-shadow: 1px 2px 1px #404e5c;
 }
-
+h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 100;
+    text-shadow: 1px 2px 1px #404e5c;
+}
 .qr-code {
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    top: 10px;
     position: absolute;
-    margin-bottom: 90px;
-    margin-right: 60px;
+    p {
+        margin: 0;
+        color: #fff;
+        text-align: center;
+        text-shadow: 1px 2px 1px #404e5c;
+        padding: 5px 0;
+    }
 }
 
 .register {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 10px;
     background: $secondary;
     color: #fff;
     height: 80px;
-    line-height: 80px;
+    line-height: 74px;
     width: 300px;
     font-size: 30px;
     font-weight: bold;
     text-transform: uppercase;
     font-family: Roboto;
     text-align: center;
-    line-height: 80px;
+    border-bottom: solid 8px shade($secondary, 15%);
+    box-shadow: 1px 2px 1px #404e5c;
     &:hover,
+    &:focus,
     &:active {
         background: shade($secondary, 10%);
         color: #fff;
