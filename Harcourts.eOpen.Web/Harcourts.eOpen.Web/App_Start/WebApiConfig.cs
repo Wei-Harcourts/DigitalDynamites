@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
@@ -30,7 +31,8 @@ namespace Harcourts.eOpen.Web
             // https://frankapi.wordpress.com/2012/09/09/going-camelcase-in-asp-net-mvc-web-api/
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
+            jsonFormatter.SerializerSettings.Converters.Add(new BoolConverter());
+            jsonFormatter.SerializerSettings.Converters.Add(new StringConverter());
         }
     }
 }
