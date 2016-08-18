@@ -2,9 +2,10 @@
    
 @{
     ViewBag.Title = "Add new visitor";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Dummy/_Layout.cshtml";
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
     var visitor = {};
     visitor.name = '@(((ViewBag.FbUser as FacebookUserModel)?.first_name + " " + (ViewBag.FbUser as FacebookUserModel)?.last_name).Trim())';
@@ -16,14 +17,36 @@
     (function($) {
 
         $(document).ready(function() {
+
+            $("#name").val(visitor.name);
+            $("#phone").val(visitor.phoneNumber);
+            $("#email").val(visitor.emailAddress);
+            $("#buyer").prop("checked", visitor.isBuyer === 1);
+            $("#vendor").prop("checked", visitor.isVendor === 1);
+            $("#intouch").prop("checked", visitor.inTouch === 1);
+
             $("#done").click(function() {
+                visitor.name = $("#name").val();
+                visitor.phoneNumber = $("#phone").val();
+                visitor.emailAddress = $("#email").val();
+                visitor.isBuyer = $("#buyer").prop("checked") ? 1 : 0;
+                visitor.isVendor = $("#vendor").prop("checked") ? 1 : 0;
+                visitor.inTouch = $("#intouch").prop("checked") ? 1 : 0;
+                console.log(visitor);
+
                 $.ajax({
                     url: "/visitors/",
                     type: "POST",
                     dataType: "json",
                     contentType: "application/json",
                     data: JSON.stringify(visitor),
-                    processData: false
+                    processData: false,
+                    success:function(data) {
+                        console.log(data);
+                    },
+                    error:function(xhr, ts, et) {
+                        console.log(ts);
+                    }
                 });
             });
 
@@ -33,14 +56,41 @@
                     type: "POST",
                     dataType: "json",
                     contentType: "application/json",
-                    processData: false
+                    processData: false,
+                    success:function(data) {
+                        console.log(data);
+                    },
+                    error:function(xhr, ts, et) {
+                        console.log(ts);
+                    }
                 });
             });
+
+            $("#who").click(function() {
+                $.ajax({
+                    url: "/visitors/",
+                    type: "GET",
+                    processData: false,
+                    success:function(data) {
+                        console.log(data);
+                    },
+                    error:function(xhr, ts, et) {
+                        console.log(ts);
+                    }
+                });
+            });
+
         });
     })(jQuery);
 
-    
 </script>
 
+<input id="name" type="text"/>
+<input id="phone" type="text"/>
+<input id="email" type="text"/>
+<span><input id="buyer" type="checkbox" />Buyer?</span>
+<span><input id="vendor" type="checkbox" />Vendor?</span>
+<span><input id="intouch" type="checkbox" />Be in touch?</span>
 <button id="done">Done</button>
 <button id="notify">Notify</button>
+<button id="who">Who</button>

@@ -9,6 +9,5 @@ namespace Harcourts.eOpen.Web.Models
     {
         public bool IsFacebookVisitor => true;
         public string FacebookUserId { get; set; }
-        public bool InTouch { get; set; }
     }
 }
