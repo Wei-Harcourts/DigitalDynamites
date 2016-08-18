@@ -9,6 +9,8 @@ namespace Harcourts.eOpen.Web.Settings
             ClientId = ConfigurationManager.AppSettings["AppClientId"];
             ClientSecret = ConfigurationManager.AppSettings["AppClientSecret"];
             RedirectUri = ConfigurationManager.AppSettings["AppRedirectUri"];
+            Template = ConfigurationManager.AppSettings["Template"];
+            FbNotificationHref = ConfigurationManager.AppSettings["FbNotificationHref"];
         }
 
         public string ClientId { get; set; }
@@ -16,5 +18,9 @@ namespace Harcourts.eOpen.Web.Settings
         public string ClientSecret { get; set; }
 
         public string RedirectUri { get; set; }
+
+        public string Template { get; set; }
+
+        public string FbNotificationHref { get; set; }
     }
 }
