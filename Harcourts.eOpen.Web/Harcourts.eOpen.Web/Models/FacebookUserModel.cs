@@ -10,6 +10,8 @@
 
         public string last_name { get; set; }
 
+        public string listing_number { get; set; }
+
         public FacebookOAuthResponseModel AuthResponseModel { get; set; }
 
     }

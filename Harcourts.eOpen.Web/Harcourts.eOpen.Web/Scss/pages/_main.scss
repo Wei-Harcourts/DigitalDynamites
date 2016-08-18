@@ -15,6 +15,14 @@ h1 {
     margin: 0;
 }
 
+.qr-code {
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 90px;
+    margin-right: 60px;
+}
+
 .register {
     position: absolute;
     right: 0;
@@ -42,7 +50,48 @@ h1 {
 // ====================================================
 
 .gallery {
-
+    .slide {
+        position: relative;
+        overflow: hidden;
+        img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            @include transform(translate3d(-50%,-50%,0));
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            max-width: none;
+            @include transition(z-index 0s 0.2s linear);
+            z-index: 1;
+        }
+        &.active {
+            img {
+                z-index: 10;
+            }
+        }
+    }
+}
+.fp-controlArrow {
+    border: none !important;
+    width: auto !important;
+    height: auto !important;
+    color: #fff;
+    &.fp-prev {
+        &:before {
+            @include material-icon("chevron_left");
+            font-size: 100px;
+            text-shadow: 0 2px 2px $alt-background;
+        }
+    }
+    &.fp-next {
+        &:before {
+            @include material-icon("chevron_right");
+            font-size: 100px;
+            text-shadow: 0 2px 2px $alt-background;
+        }
+    }
 }
 
 // Third Section.

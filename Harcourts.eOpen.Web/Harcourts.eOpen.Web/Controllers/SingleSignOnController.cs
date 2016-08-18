@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -30,8 +31,9 @@ namespace Harcourts.eOpen.Web.Controllers
 
         // GET: SingleSignOn
         [System.Web.Mvc.Route("facebook")]
-        public ActionResult Index()
+        public ActionResult Index([FromUri]string listingNumber)
         {
+            Session["listingNumber"] = listingNumber;
             var faceBookUri =
                 $"https://www.facebook.com/dialog/oauth?client_id={_appSettings.ClientId}&redirect_uri={_appSettings.RedirectUri + "login/complete"}";
             return Redirect(faceBookUri);
@@ -44,6 +46,11 @@ namespace Harcourts.eOpen.Web.Controllers
             _facebookClient.AccessToken = model.access_token;
             var response = _facebookClient.Get<FacebookUserModel>("/me", null);
             response.AuthResponseModel = model;
+            if (Session["listingNumber"] != null)
+            {
+                response.listing_number = Session["listingNumber"].ToString();
+                Session["listingNumber"] = null;
+            }
             Session[response.email] = response;
             Response.Cookies.Add(new System.Web.HttpCookie("Email", response.email));
             var url = Url.RouteUrl("AddNewVisitor") + "?from=" + response.email;

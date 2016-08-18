@@ -17,8 +17,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     includePaths: [
-                        require('node-bourbon').includePaths,
-                        "node_modules/font-awesome/scss/"
+                        require('node-bourbon').includePaths
                     ],
                     check: false,
                     precision: 10,
