@@ -40,7 +40,7 @@ namespace Harcourts.eOpen.Web.Controllers
         }
 
         [System.Web.Mvc.Route("complete")]
-        public ViewResult GetAccessTokenFromExternal([FromUri]string code)
+        public ActionResult GetAccessTokenFromExternal([FromUri] string code)
         {
             var model = _fbLoginServices.CompleteOAuth(code);
             _facebookClient.AccessToken = model.access_token;
@@ -53,7 +53,8 @@ namespace Harcourts.eOpen.Web.Controllers
             }
             Session[response.email] = response;
             Response.Cookies.Add(new System.Web.HttpCookie("Email", response.email));
-            return View("Index", response);
+            var url = Url.RouteUrl("AddNewVisitor") + "?from=" + response.email;
+            return Redirect(url);
         }
 
         [System.Web.Mvc.Route("push")]

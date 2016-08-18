@@ -204,6 +204,8 @@
     <Content Include="Scss\vendor\README.md" />
     <Content Include="Scss\vendor\_normalize.scss" />
     <Content Include="Views\SingleSignOn\Index.cshtml" />
+    <Content Include="Content\Images\facebook_auth.png" />
+    <Content Include="Views\Home\AddVisitor.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
