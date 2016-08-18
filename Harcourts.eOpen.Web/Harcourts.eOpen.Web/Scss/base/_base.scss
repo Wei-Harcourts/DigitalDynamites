@@ -1,0 +1,57 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+    box-sizing: border-box;
+}
+
+/**
+    * Make all elements from the DOM inherit from the parent box-sizing
+    * Since `*` has a specificity of 0, it does not override the `html` value
+    * making all elements inheriting from the root box-sizing value
+    * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+*/
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+    color: $brand-color;
+    text-decoration: none;
+    @include transition(all $default-transition);
+    @include on-event {
+        color: $secondary;
+        text-decoration: none;
+    }
+}
+
+// Basic styles for Images.
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+// Basic List Styles.
+ol,
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+li {
+    margin: 0;
+    padding: 0;
+}
+
+// Validation.
+[ng-message] {
+    color: red;
+}

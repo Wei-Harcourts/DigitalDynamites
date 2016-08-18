@@ -141,8 +141,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Constants\StringConstants.cs" />
+    <Compile Include="Controllers\DummyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Constants\StringConstants.cs" />
     <Compile Include="Controllers\SingleSignOnController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -159,19 +160,15 @@
     <Compile Include="Models\Visitor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\thirdparty.min.js" />
     <Content Include="App_Data\mongodb.txt" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Gruntfile.js" />
+    <Content Include="Images\harcourts-logo.svg" />
+    <Content Include="Images\house-background.jpg" />
+    <Content Include="package.json" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -186,12 +183,31 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Dummy\Index.cshtml" />
+    <Content Include="Views\Dummy\_Layout.cshtml" />
+    <Content Include="Scss\main.scss" />
+    <Content Include="Scss\pages\_main.scss" />
+    <Content Include="Scss\base\README.md" />
+    <Content Include="Scss\base\_base.scss" />
+    <Content Include="Scss\base\_fonts.scss" />
+    <Content Include="Scss\base\_helpers.scss" />
+    <Content Include="Scss\base\_typography.scss" />
+    <Content Include="Scss\layout\README.md" />
+    <Content Include="Scss\layout\_footer.scss" />
+    <Content Include="Scss\layout\_header.scss" />
+    <Content Include="Scss\layout\_layout.scss" />
+    <Content Include="Scss\pages\README.md" />
+    <Content Include="Scss\utils\README.md" />
+    <Content Include="Scss\utils\_functions.scss" />
+    <Content Include="Scss\utils\_mixins.scss" />
+    <Content Include="Scss\utils\_variables.scss" />
+    <Content Include="Scss\vendor\README.md" />
+    <Content Include="Scss\vendor\_normalize.scss" />
     <Content Include="Views\SingleSignOn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,53 @@
+﻿
+// First Section.
+// ====================================================
+
+.home {
+
+}
+.logo {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.register {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: $secondary;
+    color: #fff;
+    height: 80px;
+    line-height: 80px;
+    width: 300px;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Roboto;
+    text-align: center;
+    line-height: 80px;
+    &:hover,
+    &:active {
+        background: shade($secondary, 10%);
+        color: #fff;
+    }
+}
+
+// Second Section.
+// Gallery.
+// ====================================================
+
+.gallery {
+
+}
+
+// Third Section.
+// Form.
+// ====================================================
+.form {
+
+}

@@ -1,0 +1,49 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to main layout components.
+// -----------------------------------------------------------------------------
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-width: $min-body-width;
+    @include flex-direction(column);    
+    background: url("/Images/House/image8.jpg") no-repeat center center;
+    background-size: cover;    
+    position: relative;
+    z-index: 0;
+    &:before {
+        content: "";
+        background: $alt-background;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.4;
+        z-index: 1;
+    }
+    > ui-view {
+        height: 100%;
+    }
+}
+
+.wrapper {
+    min-height: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.section {
+    
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
