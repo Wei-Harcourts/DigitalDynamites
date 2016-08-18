@@ -160,6 +160,7 @@
     <Compile Include="Models\Visitor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\qrcode.36318591.png" />
     <Content Include="Content\thirdparty.min.js" />
     <Content Include="App_Data\mongodb.txt" />
     <Content Include="favicon.ico" />
