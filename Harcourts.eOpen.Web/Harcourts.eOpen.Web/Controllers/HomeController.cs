@@ -14,22 +14,7 @@ namespace Harcourts.eOpen.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
-        }
-
-        [Route("AddNewVisitor", Name = "AddNewVisitor")]
-        [HttpGet]
-        public ActionResult AddVisitor(string from)
-        {
-            FacebookUserModel fbUser = null;
-            if (!string.IsNullOrEmpty(from))
-            {
-                fbUser = (FacebookUserModel) Session[from];
-            }
-            ViewBag.FbUser = fbUser;
-            return View();
+            return RedirectToAction("Index", "Dummy");
         }
     }
 }
