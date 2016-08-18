@@ -16,5 +16,14 @@ namespace Harcourts.eOpen.Web.Controllers
         {
             return RedirectToAction("Index", "Dummy");
         }
+
+        [Route("listings/view/{listingNumber}")]
+        public ActionResult ListingView(string listingNumber)
+        {
+            //ViewBag.ListingNumber = listingNumber;
+            //return View();
+            return Redirect("https://international.harcourts.net/");
+            //return Redirect("https://public.nz.dev.harcourts.net/");
+        }
     }
 }

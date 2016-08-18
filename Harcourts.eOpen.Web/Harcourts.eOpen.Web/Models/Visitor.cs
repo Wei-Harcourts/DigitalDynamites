@@ -20,5 +20,6 @@ namespace Harcourts.eOpen.Web.Models
         public bool IsBuyer { get; set; }
         public bool IsVendor { get; set; }
         public bool InTouch { get; set; }
+        public string ListingNumber { get; set; }
     }
 }

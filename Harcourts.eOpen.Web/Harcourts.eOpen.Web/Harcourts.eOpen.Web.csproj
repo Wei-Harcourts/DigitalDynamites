@@ -217,7 +217,9 @@
     <Content Include="Views\SingleSignOn\Index.cshtml" />
     <Content Include="Content\Images\facebook_auth.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Home\ListingView.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

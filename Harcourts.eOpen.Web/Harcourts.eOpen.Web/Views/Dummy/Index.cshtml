@@ -10,6 +10,7 @@
     visitor.isFacebookVisitor = @((ViewBag.FbUser as FacebookUserModel) == null ? 0 : 1);
     visitor.facebookUserId = '@((((ViewBag.FbUser as FacebookUserModel)?.id) ?? string.Empty).Trim())';
     visitor.inTouch = 1;
+    visitor.listingNumber = '@((((ViewBag.FbUser as FacebookUserModel)?.listing_number) ?? string.Empty).Trim())';
 </script>
 
 <section class="section home" data-anchor="home">
