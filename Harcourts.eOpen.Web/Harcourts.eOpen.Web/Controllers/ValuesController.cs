@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Hosting;
 using System.Web.Http;
 using Harcourts.eOpen.Web.Models;
+using Harcourts.eOpen.Web.Services;
 
 namespace Harcourts.eOpen.Web.Controllers
 {
@@ -71,7 +72,8 @@ namespace Harcourts.eOpen.Web.Controllers
                         continue;
                     }
 
-                    // PushNotification(facebookVisitor.FacebookUserId)
+                    var fb = new FbNotificationServices();
+                    fb.PushFbNotification(facebookVisitor.FacebookUserId);
                 }
 
                 return Ok(new ApiResult {Success = true, Message = string.Empty});
