@@ -144,7 +144,6 @@
     <Compile Include="Controllers\DummyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Constants\StringConstants.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SingleSignOnController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,6 +168,7 @@
     <Content Include="Images\harcourts-logo.svg" />
     <Content Include="Images\house-background.jpg" />
     <Content Include="package.json" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

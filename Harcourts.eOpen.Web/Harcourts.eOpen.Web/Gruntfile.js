@@ -29,24 +29,56 @@ module.exports = function (grunt) {
                 }
             }
         },
+//        useminPrepare: {
+//            html: {
+//                src: ['Views/Dummy/_Layout.html']
+//            },
+//            options: {
+//                dest: './'
+//            }
+//        },
+//        usemin: {
+//            html: {
+//                src: ['Views/Dummy/_Layout.html']
+//            }
+//        },
+//        filerev: {
+//            options: {
+//                algorithm: 'md5',
+//                length: 8
+//            },
+//            files: {
+//                src: [
+//                    'Content/Site.min.js',
+//                    'Content/thirdparty.min.js'
+//                ],
+//                dest: 'Content'
+//            }
+//        },
         concat: {
             thirdparty: {
-                files: [{
-                    dest: 'Content/thirdparty.min.js',
-                    src: [
-                        'node_modules/fullpage.js/jquery.fullPage.js'
-                    ]
-                }]
+                files: [
+                    {
+                        dest: 'Content/thirdparty.min.js',
+                        src: [
+                            'node_modules/fullpage.js/jquery.fullPage.js'
+                        ]
+                    }
+                ]
             }
         }
     });
     
 
+    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+//    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+//    grunt.loadNpmTasks('grunt-contrib-uglify');
+//    grunt.loadNpmTasks('grunt-filerev');
+
     grunt.registerTask('default', [
         'sass',
-        'concat:thirdparty'
+        'concat'
     ]);
-    grunt.loadNpmTasks('grunt-sass');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-watch');
 };
