@@ -19,7 +19,6 @@
     "node-bourbon": "^4.2.8"
   },
   "dependencies": {
-    "font-awesome": "^4.6.3",
     "fullpage.js": "^2.8.4"
   }
 }
