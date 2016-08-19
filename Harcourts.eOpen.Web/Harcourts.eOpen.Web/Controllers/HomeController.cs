@@ -14,22 +14,16 @@ namespace Harcourts.eOpen.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return RedirectToAction("Index", "Dummy");
         }
 
-        [Route("AddNewVisitor", Name = "AddNewVisitor")]
-        [HttpGet]
-        public ActionResult AddVisitor(string from)
+        [Route("listings/view/{listingNumber}")]
+        public ActionResult ListingView(string listingNumber)
         {
-            FacebookUserModel fbUser = null;
-            if (!string.IsNullOrEmpty(from))
-            {
-                fbUser = (FacebookUserModel) Session[from];
-            }
-            ViewBag.FbUser = fbUser;
-            return View();
+            //ViewBag.ListingNumber = listingNumber;
+            //return View();
+            return Redirect("https://international.harcourts.net/");
+            //return Redirect("https://public.nz.dev.harcourts.net/");
         }
     }
 }

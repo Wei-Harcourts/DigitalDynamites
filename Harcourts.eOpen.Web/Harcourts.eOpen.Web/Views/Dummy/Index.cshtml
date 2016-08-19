@@ -1,10 +1,24 @@
-﻿@{
+﻿@using Harcourts.eOpen.Web.Models
+@{
     Layout = "~/Views/Dummy/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    var visitor = {};
+    visitor.name = '@(((ViewBag.FbUser as FacebookUserModel)?.first_name + " " + (ViewBag.FbUser as FacebookUserModel)?.last_name).Trim())';
+    visitor.emailAddress = '@((((ViewBag.FbUser as FacebookUserModel)?.email) ?? string.Empty).Trim())';
+    visitor.isFacebookVisitor = @((ViewBag.FbUser as FacebookUserModel) == null ? 0 : 1);
+    visitor.facebookUserId = '@((((ViewBag.FbUser as FacebookUserModel)?.id) ?? string.Empty).Trim())';
+    visitor.inTouch = 1;
+    visitor.listingNumber = '@((((ViewBag.FbUser as FacebookUserModel)?.listing_number) ?? string.Empty).Trim())';
+</script>
+
 <section class="section home" data-anchor="home">
     <div class="container">
-        <h1>Elegant home with outstanding views in a premium location!</h1>
+        <div class="property-info">
+            <h1>Elegant home with outstanding views in a premium location!</h1>
+            <h2>18 Marieville Esplanade</h2>
+        </div>
 
         <footer>
             <div class="qr-code">
@@ -55,7 +69,50 @@
 </section>
 
 <section class="section form" data-anchor="form">
-    section 2
+    <div class="dummy-form">
+        <div>
+            <input id="name" type="text" placeholder="Full name" />
+        </div>
+        <div>
+            <input id="phone" type="text" placeholder="Phone #" />
+        </div>
+        <div>
+            <input id="email" type="text" placeholder="Email address" />
+        </div>
+        <div>
+            <span><input id="buyer" type="checkbox" />Buyer?</span>
+            <span><input id="vendor" type="checkbox" />Vendor?</span>
+            <span><input id="intouch" type="checkbox" />Be in touch?</span>
+        </div>
+        <div>
+            <a id="done">Done</a>
+        </div>
+    </div>
+</section>
+
+<section class="section manage" data-anchor="manage">
+    <div class="container">
+        <h1>If you are the listing agent...</h1>
+        <div>
+            <span>Can't see the latest? <a id="who">Refresh</a></span>
+        </div>
+        <div>
+            <span>Listing information changed? <a id="notify">Notify</a> all visitors!</span>
+        </div>
+        <table id="visitors">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Is Buyer?</th>
+                <th>Is Vendor?</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </section>
 
 

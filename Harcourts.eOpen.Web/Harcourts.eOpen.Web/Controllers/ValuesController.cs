@@ -73,7 +73,7 @@ namespace Harcourts.eOpen.Web.Controllers
                     }
 
                     var fb = new FbNotificationServices();
-                    fb.PushFbNotification(facebookVisitor.FacebookUserId);
+                    fb.PushFbNotification(facebookVisitor.FacebookUserId, facebookVisitor.ListingNumber);
                 }
 
                 return Ok(new ApiResult {Success = true, Message = string.Empty});

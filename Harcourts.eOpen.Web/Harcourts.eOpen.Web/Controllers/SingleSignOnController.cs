@@ -53,7 +53,7 @@ namespace Harcourts.eOpen.Web.Controllers
             }
             Session[response.email] = response;
             Response.Cookies.Add(new System.Web.HttpCookie("Email", response.email));
-            var url = Url.RouteUrl("AddNewVisitor") + "?from=" + response.email;
+            var url = Url.Action("Index", "Dummy") + "?from=" + response.email+ "#form";
             return Redirect(url);
         }
 

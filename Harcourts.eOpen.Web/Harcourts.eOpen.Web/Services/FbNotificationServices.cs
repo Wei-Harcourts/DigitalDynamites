@@ -19,7 +19,7 @@ namespace Harcourts.eOpen.Web.Services
             _appSettings = new AppSettings();
         }
 
-        public void PushFbNotification(string userId)
+        public void PushFbNotification(string userId, string listingNumber = null)
         {
             var responseModel = _fbLoginServices.AuthenticateClient();
             var restClient = new RestClient(new Uri(
@@ -36,7 +36,7 @@ namespace Harcourts.eOpen.Web.Services
             {
                 Name = StringConstants.Href,
                 Type = ParameterType.QueryString,
-                Value = _appSettings.FbNotificationHref
+                Value = string.Format(_appSettings.FbNotificationHref, listingNumber ?? string.Empty)
             });
 
             restRequest.Parameters.Add(
@@ -44,7 +44,7 @@ namespace Harcourts.eOpen.Web.Services
                 {
                     Name = StringConstants.Template,
                     Type = ParameterType.QueryString,
-                    Value = string.Format(_appSettings.Template, userId)
+                    Value = string.Format(_appSettings.Template, userId, string.IsNullOrEmpty(listingNumber) ? string.Empty : " #" + listingNumber)
                 });
             var response = restClient.ExecuteAsPost(restRequest, StringConstants.Post);
         }
