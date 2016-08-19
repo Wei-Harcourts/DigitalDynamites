@@ -6,6 +6,7 @@
         // Initialise the FullPage Layout JS.
         $(".wrapper").fullpage({
             sectionSelector: '.section',
+            responsiveWidth: 600,
             anchors: ['home', 'gallery', 'form', 'manage']
         });
 
