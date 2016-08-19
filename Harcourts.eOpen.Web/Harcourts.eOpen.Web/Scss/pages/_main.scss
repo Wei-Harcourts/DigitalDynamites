@@ -57,7 +57,6 @@ h2 {
     font-family: Roboto;
     text-align: center;
     border-bottom: solid 8px shade($secondary, 15%);
-    box-shadow: 1px 2px 1px #404e5c;
     &:hover,
     &:focus,
     &:active {
@@ -120,4 +119,174 @@ h2 {
 // ====================================================
 .form {
 
+}
+.dummy-form {
+    background: rgba(#fff, 0.3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include transform(translate3d(-50%,-50%,0));
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    h2 {
+        text-shadow: 0px 1px 0px $alt-background;
+        font-weight: 300;
+        font-size: 38px;
+        padding: 40px 0;
+        color: #fff;
+    }
+    input[type=text] {
+        width: 80%;
+        font-size: 30px;
+        font-weight: 300;
+        padding: 10px 20px;
+        border: none;
+        margin-bottom: 10px;
+        -webkit-appearance: none;
+        background: #fff;
+        @include transition(background 0.2s linear);
+        @include placeholder {
+            opacity: 1;
+            color: #aaa;
+        }
+        &:focus {
+            background: #fafafa;
+        }
+    }
+    .iama {
+        text-align: left;
+        background: #fff;
+        margin: 0 auto 10px;
+        width: 80%;
+        padding: 20px;
+        p {
+            margin: 0 0 10px;
+            font-size: 24px;
+            font-weight: 300;
+        }
+    }
+    .notifications {
+        text-align: left;
+        background: #fff;
+        margin: 0 auto;
+        width: 80%;
+        padding: 20px;
+    }
+    label {
+        margin-right: 10px;
+        font-size: 18px;
+        input {
+            margin-right: 10px;
+        }
+    }
+}
+#done {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: $secondary;
+    color: #fff;
+    height: 80px;
+    line-height: 74px;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Roboto;
+    text-align: center;
+    border-bottom: solid 8px shade($secondary, 15%);
+    &:hover,
+    &:focus,
+    &:active {
+        background: shade($secondary, 10%);
+        color: #fff;
+    }
+}
+
+// Fourth Section.
+// Visitor List.
+// ====================================================
+
+.visitor-list {
+    background: rgba(#fff, 0.3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include transform(translate3d(-50%,-50%,0));
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    h2 {
+        text-shadow: 0px 1px 0px $alt-background;
+        font-weight: 300;
+        font-size: 38px;
+        padding: 40px 0;
+        color: #fff;
+    }
+}
+#who {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+    &:before {
+        @include material-icon("refresh");
+        font-size: 24px;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: rgba(#fff, 0.8);
+        border-radius: 50px;
+        color: $secondary;
+    }    
+    &:hover:before,
+    &:active:before {
+        background: #fff;
+    }
+}
+
+#visitors {
+    text-align: left;
+    width: 90%;
+    background: #fff;
+    margin: 0 auto;
+    th {
+        font-weight: 300;
+        padding: 10px 8px;
+        border-bottom: solid 1px #ccc;
+        background: #f5f5f5;
+    }
+    td {
+        font-weight: 400;
+        padding: 10px 8px;
+    }
+    tr:nth-child(even) td {
+        background: #fafafa;
+    }
+}
+
+#notify {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: $secondary;
+    color: #fff;
+    height: 80px;
+    line-height: 74px;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Roboto;
+    text-align: center;
+    border-bottom: solid 8px shade($secondary, 15%);
+    &:hover,
+    &:focus,
+    &:active {
+        background: shade($secondary, 10%);
+        color: #fff;
+    }
 }

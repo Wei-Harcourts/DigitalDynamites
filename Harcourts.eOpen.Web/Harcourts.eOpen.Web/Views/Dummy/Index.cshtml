@@ -22,7 +22,8 @@
 
         <footer>
             <div class="qr-code">
-                <img  src="~/Content/Images/qrcode.36319966.png" />
+                <img src="~/Content/Images/qrcode.36319966.png" />
+                <p>Sync with Facebook</p>
             </div>
             <img class="logo" src="/Images/harcourts-logo.svg" alt="Harcourts"/>
             <a class="register" href="/dummy#form">
@@ -70,6 +71,7 @@
 
 <section class="section form" data-anchor="form">
     <div class="dummy-form">
+        <h2>Open Home Sign-in</h2>
         <div>
             <input id="name" type="text" placeholder="Full name" />
         </div>
@@ -79,10 +81,13 @@
         <div>
             <input id="email" type="text" placeholder="Email address" />
         </div>
-        <div>
-            <span><input id="buyer" type="checkbox" />Buyer?</span>
-            <span><input id="vendor" type="checkbox" />Vendor?</span>
-            <span><input id="intouch" type="checkbox" />Be in touch?</span>
+        <div class="iama">
+            <p>I am a...</p>
+            <label><input id="buyer" type="checkbox" />Buyer?</label>
+            <label><input id="vendor" type="checkbox" />Vendor?</label>
+        </div>
+        <div class="notifications">
+            <label><input id="intouch" type="checkbox" />I wish to receive notifications</label>
         </div>
         <div>
             <a id="done">Done</a>
@@ -91,27 +96,23 @@
 </section>
 
 <section class="section manage" data-anchor="manage">
-    <div class="container">
-        <h1>If you are the listing agent...</h1>
-        <div>
-            <span>Can't see the latest? <a id="who">Refresh</a></span>
-        </div>
-        <div>
-            <span>Listing information changed? <a id="notify">Notify</a> all visitors!</span>
-        </div>
+    <div class="visitor-list">
+        <h2>Visitor List <a id="who"></a></h2>
         <table id="visitors">
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Contact Number</th>
-                <th>Email</th>
-                <th>Is Buyer?</th>
-                <th>Is Vendor?</th>
-            </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Is Buyer?</th>
+                    <th>Is Vendor?</th>
+                </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
+
+        <a id="notify">Send Notification</a>
     </div>
 </section>
 
